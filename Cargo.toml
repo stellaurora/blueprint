@@ -1,0 +1,46 @@
+[package]
+name = "blueprint"
+version = "1.0.0"
+edition = "2024"
+authors = ["stellaurora <jeancharlduplessis@gmail.com>"]
+description = "A file-based system package management software"
+
+[dependencies]
+# Deserialisation support for TOML files
+serde = { version = "1.0", features = ["derive"] }
+
+# TOML files are what is used to configure typewriter setups
+toml = { version = "0.9", features = ["serde", "parse"] }
+
+# Argument parsing helper library
+clap = { version = "4.5", features = ["derive", "wrap_help"] }
+
+# Easy command input handling
+inquire = "0.9.1"
+
+# Easy error handling/Logging
+anyhow = "1.0"
+log = "0.4"
+env_logger = "0.11"
+
+# Pretty println!
+ansi_term = "0.12"
+
+# Regex for variable matching
+regex = "1"
+
+
+[profile.release]
+# Try optimise harder for even better performance..
+codegen-units = 1
+lto = true
+panic = "abort"
+
+
+[profile.tiny]
+# Tiny executable focus
+inherits = "release"
+opt-level = "z"
+strip = true 
+
+

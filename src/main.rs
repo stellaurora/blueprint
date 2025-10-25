@@ -34,7 +34,7 @@ fn main() {
     // Run correct command for the type.
     let command_result = match args.command {
         args::Commands::Init { file } => init_command(file),
-        args::Commands::Apply { file } => apply_command(file),
+        args::Commands::Apply { file, section } => apply_command(file, section),
     };
 
     // Use error logger to print error..

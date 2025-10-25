@@ -84,7 +84,7 @@ checksum = "812e12b5285cc515a9c72a5c1d3b6d46a19dac5acfef5265968c166106e31dd3"
 
 [[package]]
 name = "blueprint"
-version = "1.0.0"
+version = "2.0.0"
 dependencies = [
  "ansi_term",
  "anyhow",
@@ -93,6 +93,7 @@ dependencies = [
  "inquire",
  "log",
  "path-absolutize",
+ "quill",
  "regex",
  "serde",
  "tilde-expand",
@@ -465,6 +466,11 @@ checksum = "89ae43fd86e4158d6db51ad8e2b80f313af9cc74f5c0e03ccb87de09998732de"
 dependencies = [
  "unicode-ident",
 ]
+
+[[package]]
+name = "quill"
+version = "1.0.0"
+source = "git+https://github.com/stellaurora/quill?branch=main#9f3468c6179dda69b0f75400411209f5cc992ff9"
 
 [[package]]
 name = "quote"

@@ -29,6 +29,12 @@ pub enum Commands {
         /// Path to the template file to create
         #[arg(short, long)]
         file: String,
+
+        /// Name of the provided section for
+        /// Quill TOML extensions. ALL of the config files
+        /// should share this section to minimise confusion.
+        #[arg(short, long, default_value = "blueprint")]
+        section: String,
     },
 }
 

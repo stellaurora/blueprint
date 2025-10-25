@@ -16,7 +16,7 @@ pub fn install_packages(package_list: &Vec<&Package>) -> anyhow::Result<()> {
 
     // Generate paru command argument
     let command = format!(
-        "{} -Sy --needed {}",
+        "{} -Syu --needed {}",
         PARU_COMMAND_STRING,
         format_package_list_for_shell(package_list)
     );

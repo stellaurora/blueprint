@@ -7,7 +7,7 @@
   <strong>Declarative Package Manager for Linux</strong>
 </div>
 <div align="center">
-  A <code>TOML</code> file-based declarative package manager.
+  A <code>TOML</code> file-based declarative package manager wrapper.
 </div>
 
 

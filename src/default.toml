@@ -1,0 +1,30 @@
+# This is the default auto-generated configuration file for
+# blueprint, Please read the usage guide to learn more about
+# what can be used here!
+
+# [[link]]
+# Links to another blueprint configuration file (in same format)
+# and essentially "includes/runs" it as part of this configuration.
+[[link]]
+
+# File paths are relative to this configuration file.
+file="blueprint_other.toml"
+
+# [[package]]
+# An individual package to
+# install in the system
+[[package]]
+
+# Name of the package
+name="linux-zen"
+
+# [[multi_packages]]
+# A shorthand for many different
+# packages at once to be installed from the same source
+[[multi_packages]]
+names = [
+    "linux-lts",
+    "linux"
+]
+
+

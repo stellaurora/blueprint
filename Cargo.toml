@@ -3,7 +3,7 @@ name = "blueprint"
 version = "1.0.0"
 edition = "2024"
 authors = ["stellaurora <jeancharlduplessis@gmail.com>"]
-description = "A file-based system package management software"
+description = "A file-based declarative system package management software"
 
 [dependencies]
 # Deserialisation support for TOML files
@@ -29,6 +29,9 @@ ansi_term = "0.12"
 # Regex for variable matching
 regex = "1"
 
+# Absolute path-ing without canonicalise
+path-absolutize = { version = "3.1.1", features = ["once_cell_cache"] }
+tilde-expand = "0.1.1"
 
 [profile.release]
 # Try optimise harder for even better performance..

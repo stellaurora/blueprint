@@ -8,21 +8,30 @@ use serde::Deserialize;
 
 use crate::{
     config::ROOT_CONFIG,
-    package::{package::Package, source::paru},
+    package::{
+        package::Package,
+        source::{pacman, paru},
+    },
 };
 
 #[derive(Deserialize, Debug, PartialEq, Copy, Clone, Hash, Eq, PartialOrd, Ord)]
 pub enum PackageSource {
-    // Use the Arch Linux "Paru" package manage as the source
+    // Use the Arch Linux "Paru" package manager as the source
     // for these packages
     #[serde(rename = "archlinux-paru")]
     ArchParu,
+
+    // Use the Arch Linux "Pacman" package manager as the source
+    // for these packages
+    #[serde(rename = "archlinux-pacman")]
+    ArchPacman,
 }
 
 impl Display for PackageSource {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             PackageSource::ArchParu => write!(f, "Arch-Linux using Paru"),
+            PackageSource::ArchPacman => write!(f, "Arch-Linux using Pacman"),
         }
     }
 }
@@ -37,7 +46,7 @@ pub fn empty_package_list_fn(_: &Vec<&Package>) -> anyhow::Result<()> {
 
 impl Default for PackageSource {
     fn default() -> Self {
-        Self::ArchParu
+        Self::ArchPacman
     }
 }
 
@@ -58,6 +67,7 @@ impl PackageSource {
 
         match self {
             PackageSource::ArchParu => Ok(paru::remove_non_packages),
+            PackageSource::ArchPacman => Ok(pacman::remove_non_packages),
         }
     }
 
@@ -78,6 +88,7 @@ impl PackageSource {
 
         Ok(match self {
             PackageSource::ArchParu => paru::install_packages,
+            PackageSource::ArchPacman => pacman::install_packages,
         })
     }
 }

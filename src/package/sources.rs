@@ -46,6 +46,10 @@ pub fn empty_package_list_fn(_: &Vec<&Package>) -> anyhow::Result<()> {
 
 impl Default for PackageSource {
     fn default() -> Self {
+        if ROOT_CONFIG.is_initialised() {
+            return ROOT_CONFIG.get_config().default_source;
+        }
+
         Self::ArchPacman
     }
 }

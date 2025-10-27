@@ -5,7 +5,7 @@ use std::sync::OnceLock;
 use serde::Deserialize;
 
 use crate::{
-    package::package::PackageList,
+    package::{package::PackageList, sources::PackageSource},
     parse_config::{ConfigLink, MultiplePackage},
 };
 
@@ -63,6 +63,10 @@ pub struct Config {
     #[serde(default = "default_shell_exec_arg")]
     pub shell_exec_arg: String,
 
+    // Default source to pull packages from on the system
+    #[serde(default)]
+    pub default_source: PackageSource,
+
     // Confirm inside of blueprint whether or not to
     // continue the apply operation?
     #[serde(default = "default_is_true")]
@@ -97,6 +101,7 @@ impl Default for Config {
             prompt_install_per_source: default_is_true(),
             prompt_removal_per_source: default_is_true(),
             remove_unrequired_software: default_is_true(),
+            default_source: PackageSource::default(),
         }
     }
 }
@@ -140,5 +145,10 @@ impl GlobalConfig {
     /// or returns an error if it could not succesfully be gotten
     pub fn get_config(self: &Self) -> &Config {
         ROOT_CONFIG.0.wait()
+    }
+
+    /// Get's whether or not the root config is initialised
+    pub fn is_initialised(self: &Self) -> bool {
+        ROOT_CONFIG.0.get().is_some()
     }
 }

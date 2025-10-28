@@ -32,15 +32,21 @@ pub struct Blueprint {
     pub config: Option<Config>,
 
     // Links to other files to include in the configuration
-    #[serde(rename = "link", default)]
+    #[serde(
+        alias = "link",
+        alias = "include",
+        alias = "use",
+        alias = "import",
+        default
+    )]
     pub links: Vec<ConfigLink>,
 
     // Packages for keeping track of package management
-    #[serde(rename = "package", default)]
+    #[serde(alias = "package", alias = "install", default)]
     pub packages: PackageList,
 
     // Shorthand for multiple packages under one source
-    #[serde(rename = "multi_packages", default)]
+    #[serde(alias = "multi_packages", alias = "install_all", default)]
     pub multi_packages: Vec<MultiplePackage>,
 }
 

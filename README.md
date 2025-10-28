@@ -221,6 +221,9 @@ remove_unrequired_software=true
 
 This is an array of files specified each individually under the array table ``[[link]]``, each link is like including the file and will execute its contents as part of the blueprint system (excluding ``config`` for non-root configs).
 
+#### Aliases
+The ``[[link]]`` tables can also be defined under the aliases ``[[include]]``, ``[[use]]``, and ``[[import]]``.
+
 ---------------
 
 #### ``file``
@@ -240,6 +243,8 @@ file="other_dir/other_blueprint_config.toml"
 
 There two main ways to declare packages through the config the first is through declaring single packages under the ``[[package]]`` table.
 
+#### Aliases
+The ``[[package]]`` table can also be defined under the alias ``[[install]]``
 
 ---------------
 
@@ -275,7 +280,11 @@ source="archlinux-pacman"
 
 ### Multiple Packages
 
-A shorthand exists to install many packages at once under the ``[multi_packages]`` table, this takes the same arguments as ``[[package]]`` but ``name`` is replaced by a ``names`` list, which takes in a list of strings as the packages instead.
+A shorthand exists to install many packages at once under the ``[[multi_packages]]`` table, this takes the same arguments as ``[[package]]`` but ``name`` is replaced by a ``names`` list, which takes in a list of strings as the packages instead.
+
+#### Aliases
+The ``[[multi_packages]]`` table can also be defined under the alias ``[[install_all]]``
+
 
 <a name="license"></a>
 ## 🧾 License

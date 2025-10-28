@@ -152,6 +152,19 @@ shell_exec_arg="-c"
 
 ------------------
 
+#### ``default_source``
+
+Default source to pull packages from for all packages in the configuration if not provided view ``source`` under the packages section below to view the options.
+
+type: ``string``
+
+```toml 
+[conifg]
+default_source="archlinux-pacman"
+```
+
+------------------
+
 #### ``prompt_apply_continue``
 
 Confirm inside of blueprint whether or not to continue the apply operation before running anything?
@@ -253,9 +266,11 @@ type: ``string``
 
 ``archlinux-paru``: Use the Paru AUR helper for arch linux as the command that installs the package. 
 
+``archlinux-pacman``: Uses the Arch Linux Pacman package manager as the source. 
+
 ```toml
 [[package]]
-source="archlinux-paru"
+source="archlinux-pacman"
 ```
 
 ### Multiple Packages
